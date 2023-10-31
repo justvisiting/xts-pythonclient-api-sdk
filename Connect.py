@@ -199,6 +199,7 @@ class XTSConnect(XTSCommon):
 
     def interactive_login(self):
         """Send the login url to which a user should receive the token."""
+        response = None
         try:
             params = {
                 "appKey": self.apiKey,
@@ -212,6 +213,9 @@ class XTSConnect(XTSCommon):
                                            response['result']['isInvestorClient'])
             return response
         except Exception as e:
+            if response is None:
+                return "Error while logging in"
+
             return response['description']
 
     def get_order_book(self, clientID=None):
