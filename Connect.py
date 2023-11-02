@@ -193,6 +193,10 @@ class XTSConnect(XTSCommon):
         """Set the `access_token` received after a successful authentication."""
         super().__init__(access_token,userID, isInvestorClient)
 
+    def set_tokens(self, access_token,userID, isInvestorClient):
+        """Set the `access_token` received after a successful authentication."""
+        self._set_common_variables(access_token,userID, isInvestorClient)
+
     def _login_url(self):
         """Get the remote login url to which a user should be redirected to initiate the login flow."""
         return self._default_login_uri
