@@ -212,9 +212,10 @@ class XTSConnect(XTSCommon):
             }
             response = self._post("user.login", params)
 
-            if "token" in response['result']:
-                self._set_common_variables(response['result']['token'], response['result']['userID'],
-                                           response['result']['isInvestorClient'])
+            if response is not None and "result" in response:
+                if "token" in response['result']:
+                    self._set_common_variables(response['result']['token'], response['result']['userID'],
+                                               response['result']['isInvestorClient'])
             return response
         except Exception as e:
             if response is None:
