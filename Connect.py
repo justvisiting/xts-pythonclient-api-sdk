@@ -218,7 +218,7 @@ class XTSConnect(XTSCommon):
                                                response['result']['isInvestorClient'])
             return response
         except Exception as e:
-            if response is None:
+            if response is None or response['description'] is None:
                 return "Error while logging in"
 
             return response['description']
